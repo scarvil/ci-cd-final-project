@@ -67,11 +67,8 @@ spec:
   params:
     - name: args
       description: Arguments to pass to flake8
-      type: array
-      default:
-        - "--count"
-        - "--max-complexity=10"
-        - "--max-line-length=127"
+      type: string
+      default: "--count --max-complexity=10 --max-line-length=127"
     - name: requirements_file
       description: Path to requirements.txt
       type: string
@@ -89,4 +86,4 @@ spec:
         set -e
         python -m pip install --upgrade pip wheel
         pip install -r $(params.requirements_file)
-        flake8 $(params.path) $(params.args[*])
+        flake8 $(params.path) $(params.args)
